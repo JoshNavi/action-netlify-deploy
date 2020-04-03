@@ -19,7 +19,7 @@ async function run(): Promise<void> {
 
     const dir = core.getInput('dir', {required: true})
     const message = core.getInput('message', {required: true})
-    const isProd = core.getInput('isProd', {required: true})
+    const isProd = core.getInput('isProd', {required: true}).toLowerCase() === 'true'
 
     // Create Netlify API client
     const client = new NetlifyAPI(token)
