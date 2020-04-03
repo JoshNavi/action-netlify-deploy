@@ -11,6 +11,11 @@ inputs:
   isProd:
     description: 'Whether or nor to deploy to the production site (if omitted the deploy will be a preview deploy)'
     required: true
+outputs:
+  deploy-id:
+    description: The id (hash) of the deploy in Netlify
+  deploy-url:
+    description: The url that the site was deployed to
 runs:
   using: 'node12'
   main: 'dist/index.js'

@@ -1,5 +1,35 @@
 _Actual README For This Action_
 
+# Usage
+
+```yaml
+# .github/workflows/name.yml
+
+name: Build and Deploy to Netlify
+
+on:
+ [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: yarn build # Or your build command
+
+      - name: Deploy
+        uses: JoshNavi/action-netlify-deploy@v1.0
+        with:
+          dir: './dist'
+          isProd: ${{ github.event_name == 'push }}
+          message: ${{ format('Deploy Preview for {0}', github.sha) }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+```
+
 ----
 _README from Template_
 
