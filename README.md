@@ -1,5 +1,9 @@
 _Actual README For This Action_
 
+<p>
+  <a href="https://github.com/JoshNavi/action-netlify-deploy/actions"><img alt="action-netlify-deploy status" src="https://github.com/JoshNavi/action-netlify-deploy/workflows/build-test/badge.svg"></a>
+</p>
+
 # Usage
 
 ```yaml
