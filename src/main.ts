@@ -19,7 +19,18 @@ async function run(): Promise<void> {
 
     const dir = core.getInput('dir', {required: true})
     const message = core.getInput('message', {required: true})
-    const isProd = core.getInput('isProd', {required: true}).toLowerCase() === 'true'
+
+    // Update this if Github Actions ever decides to actually pass yaml booleans as js booleans
+    const isProdVar = core.getInput('isProd', {required: true}).toLowerCase()
+    let isProd
+    if(isProdVar === 'true') {
+      isProd = true
+    } else if(isProdVar === 'false') {
+      isProd = false
+    } else {
+      core.setFailed('isProd must be one of `true` or `false`')
+      return
+    }
 
     // Create Netlify API client
     const client = new NetlifyAPI(token)
