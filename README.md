@@ -24,7 +24,7 @@ jobs:
         run: yarn build # Or your build command
 
       - name: Deploy
-        uses: JoshNavi/action-netlify-deploy@v1.0
+        uses: JoshNavi/action-netlify-deploy@v2
         with:
           dir: './dist'
           isProd: ${{ github.event_name == 'push }}
