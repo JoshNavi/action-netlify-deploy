@@ -5,7 +5,8 @@
   "description": "TypeScript action for deploying a site to netlify",
   "main": "lib/main.js",
   "scripts": {
-    "build": "tsc",
+    "build": "yarn clean && tsc",
+    "clean": "rm -r lib && rm -r dist",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
