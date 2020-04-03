@@ -13,11 +13,13 @@ jobs:
     - uses: actions/checkout@v2
     - run: |
         npm install
+        rm -r lib
+        rm -r dist
         npm run all
-  test: # make sure the action works on a clean machine without building
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: ./
-      with:
-        milliseconds: 1000
+#  test: # make sure the action works on a clean machine without building
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@v2
+#    - uses: ./
+#      with:
+#        milliseconds: 1000
