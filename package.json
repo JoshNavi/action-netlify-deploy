@@ -6,7 +6,7 @@
   "main": "lib/main.js",
   "scripts": {
     "build": "yarn clean && tsc",
-    "clean": "rm -r lib && rm -r dist",
+    "clean": "rm -rf lib && rm -rf dist",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
