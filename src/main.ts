@@ -23,9 +23,9 @@ async function run(): Promise<void> {
     // Update this if Github Actions ever decides to actually pass yaml booleans as js booleans
     const isProdVar = core.getInput('isProd', {required: true}).toLowerCase()
     let isProd
-    if(isProdVar === 'true') {
+    if (isProdVar === 'true') {
       isProd = true
-    } else if(isProdVar === 'false') {
+    } else if (isProdVar === 'false') {
       isProd = false
     } else {
       core.setFailed('isProd must be one of `true` or `false`')
