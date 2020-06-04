@@ -19,6 +19,7 @@ async function run(): Promise<void> {
 
     const dir = core.getInput('dir', {required: true})
     const message = core.getInput('message', {required: true})
+    const alias = core.getInput('alias', {required: false})
 
     // Update this if Github Actions ever decides to actually pass yaml booleans as js booleans
     const isProdVar = core.getInput('isProd', {required: true}).toLowerCase()
@@ -41,7 +42,8 @@ async function run(): Promise<void> {
     // Deploy to Netlify
     const deploy = await client.deploy(site, buildDir, {
       draft: !isProd,
-      message
+      message,
+      branch: alias,
     })
 
     core.setOutput('deploy-id', deploy.deployId)
