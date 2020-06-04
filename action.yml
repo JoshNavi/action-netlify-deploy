@@ -11,6 +11,9 @@ inputs:
   isProd:
     description: 'Whether or nor to deploy to the production site (if omitted the deploy will be a preview deploy)'
     required: true
+  alias:
+    description: 'The deploy alias to be used for the site deploy'
+    required: false
 outputs:
   deploy-id:
     description: The id (hash) of the deploy in Netlify
