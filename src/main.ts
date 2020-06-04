@@ -43,7 +43,7 @@ async function run(): Promise<void> {
     const deploy = await client.deploy(site, buildDir, {
       draft: !isProd,
       message,
-      branch: alias,
+      branch: alias
     })
 
     core.setOutput('deploy-id', deploy.deployId)
