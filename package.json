@@ -26,7 +26,7 @@
   "author": "Joshua Navi",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.0",
+    "@actions/core": "^1.2.6",
     "netlify": "^4.3.0"
   },
   "devDependencies": {
