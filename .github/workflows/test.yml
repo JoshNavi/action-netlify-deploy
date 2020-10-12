@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      -
     - uses: ./
       with:
         dir: test/build
@@ -31,3 +32,8 @@ jobs:
       env:
         NETLIFY_SITE_ID: ${{ env.NETLIFY_SITE_ID }}
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+    - name: View Output
+      run: echo "$STEP_CONTEXT"
+      env:
+        STEP_CONTEXT: ${{ toJson(steps.deploy.outputs) }}
