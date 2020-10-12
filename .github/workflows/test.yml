@@ -25,6 +25,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: ./
+        id: deploy
         with:
           dir: test/build
           message: ${{ format('Deploy Preview for {0}', github.sha) }}
