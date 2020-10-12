@@ -7,6 +7,10 @@ on: # rebuild any PRs and main branch changes
       - main
       - 'releases/*'
 
+env:
+  CI: true
+  NETLIFY_SITE_ID: 05178dc5-7ba4-4724-ab41-6e639a7045b5
+
 jobs:
   build: # make sure build/ci work properly
     runs-on: ubuntu-latest
@@ -15,10 +19,15 @@ jobs:
     - run: |
         npm install
         npm run all
-#  test: # make sure the action works on a clean machine without building
-#    runs-on: ubuntu-latest
-#    steps:
-#    - uses: actions/checkout@v2
-#    - uses: ./
-#      with:
-#        milliseconds: 1000
+  test: # make sure the action works on a clean machine without building
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./
+      with:
+        dir: test/build
+        message: ${{ format('Deploy Preview for {0}', github.sha) }}
+        isProd: ${{ true }} # This actually doesnt matter since GH Actions passes all vars as strings
+      env:
+        NETLIFY_SITE_ID: ${{ env.NETLIFY_SITE_ID }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
