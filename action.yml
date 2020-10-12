@@ -9,7 +9,7 @@ inputs:
     description: 'The message that will show up for this deploy in Netlify'
     required: true
   isProd:
-    description: 'Whether or nor to deploy to the production site (if omitted the deploy will be a preview deploy)'
+    description: 'Whether or not to deploy to the production site (if omitted the deploy will be a preview deploy)'
     required: true
   alias:
     description: 'The deploy alias to be used for the site deploy'
