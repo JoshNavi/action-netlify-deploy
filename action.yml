@@ -19,6 +19,8 @@ outputs:
     description: The id (hash) of the deploy in Netlify
   deploy-url:
     description: The url that the site was deployed to
+  deploy-json:
+    description: The full json of the deploy object
 runs:
   using: 'node12'
   main: 'dist/index.js'

@@ -48,6 +48,7 @@ async function run(): Promise<void> {
 
     core.setOutput('deploy-id', deploy.deployId)
     core.setOutput('deploy-url', deploy.deploy.deploy_ssl_url)
+    core.setOutput('deploy-json', deploy.deploy)
   } catch (error) {
     core.setFailed(error.message)
   }
