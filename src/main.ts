@@ -18,6 +18,7 @@ async function run(): Promise<void> {
     }
 
     const dir = core.getInput('dir', {required: true})
+    const fnDir = core.getInput('functions-dir', {required: false})
     const message = core.getInput('message', {required: true})
     const alias = core.getInput('alias', {required: false})
 
@@ -41,6 +42,7 @@ async function run(): Promise<void> {
 
     // Deploy to Netlify
     const deploy = await client.deploy(site, buildDir, {
+      fnDir,
       draft: !isProd,
       message,
       branch: alias
