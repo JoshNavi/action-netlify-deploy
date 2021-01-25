@@ -14,6 +14,9 @@ inputs:
   alias:
     description: 'The deploy alias to be used for the site deploy'
     required: false
+  functions-dir:
+    description: 'The directory where functions will be located for publishing'
+    required: false
 outputs:
   deploy-id:
     description: The id (hash) of the deploy in Netlify

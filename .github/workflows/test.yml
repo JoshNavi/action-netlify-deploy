@@ -18,6 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm run all
+
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
@@ -29,6 +30,27 @@ jobs:
           dir: test/build
           message: ${{ format('Deploy Preview for {0}', github.sha) }}
           isProd: ${{ true }} # This actually doesnt matter since GH Actions passes all vars as strings
+        env:
+          NETLIFY_SITE_ID: ${{ env.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+      - name: View Output
+        run: echo "$STEP_CONTEXT"
+        env:
+          STEP_CONTEXT: ${{ toJson(steps.deploy.outputs) }}
+
+  test-functions: # make sure the action works on a clean machine without building
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ./
+        id: deploy
+        with:
+          dir: test/build
+          functions-dir: test/functions-build
+          message: ${{ format('Deploy Preview for {0}', github.sha) }}
+          isProd: ${{ true }}
         env:
           NETLIFY_SITE_ID: ${{ env.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
