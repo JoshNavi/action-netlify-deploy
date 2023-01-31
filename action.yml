@@ -1,4 +1,4 @@
-name: 'Netlify Deploy'
+name: 'Deploy to Netlify'
 description: 'Github action for deploying to Netlify'
 author: 'Joshua Navi'
 inputs:
